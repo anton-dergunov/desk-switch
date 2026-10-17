@@ -46,9 +46,11 @@ as `~/.local/bin/desk-switch` and installs the LaunchAgent
 the Xcode Command Line Tools.
 
 **Input Monitoring:** macOS opens the mouse's control channel only for apps
-with this permission. The agent asks for it at first launch. If you missed
-the prompt, use **Grant Input Monitoring…** in its menu and turn on
-DeskSwitch. The monitor switch works without it.
+with this permission. The agent asks for it at first launch, but macOS often
+leaves an agent like this off the list. In that case, use **Grant Input
+Monitoring…** in its menu. It opens the settings pane and shows
+`~/Applications/DeskSwitch.app` in Finder. Drag the app into the list (or
+add it with **+**) and turn it on. The monitor switch works without it.
 
 macOS ties the permission to the exact binary. So `build.sh` rebuilds only
 when the sources changed, and then clears the old entry so macOS asks again.

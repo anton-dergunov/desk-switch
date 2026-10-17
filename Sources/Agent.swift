@@ -72,7 +72,10 @@ final class Agent: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @objc private func openPrivacySettings() {
+        // macOS does not always list an ad-hoc signed agent by itself, so also show the
+        // app in Finder: it can be dragged into the list, or picked with its "+" button.
         IOHIDRequestAccess(kIOHIDRequestTypeListenEvent)
+        NSWorkspace.shared.activateFileViewerSelecting([Bundle.main.bundleURL])
         NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ListenEvent")!)
     }
 
