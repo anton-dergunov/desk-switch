@@ -15,8 +15,12 @@ input menu is the slowest of them.
 - **Who starts the switch:** only the Mac that currently has the peripherals
   can talk to them, so the keyboard tells that Mac first. A macro key on the
   Sofle taps a hotkey (F18 means "to personal", F19 means "to work"), waits
-  about 100 ms, and then switches its own Bluetooth profile
-  (`&bt BT_SEL n`). The macros live in the keyboard config fork,
+  about 150 ms, and then switches its own output: USB plus Bluetooth
+  profile 1 for personal (`&out OUT_USB &bt BT_SEL 1`), Bluetooth profile 2
+  for work (`&out OUT_BLE &bt BT_SEL 2`). So the keyboard can stay cabled to
+  the personal Mac and still reach the work Mac over Bluetooth; with no host
+  on the cable, "personal" falls back to Bluetooth. The macros live in the
+  keyboard config fork,
   [anton-dergunov/sofle-j-keyboard-zmk](https://github.com/anton-dergunov/sofle-j-keyboard-zmk).
 - **What the Mac does:** the menu-bar agent catches the hotkey and switches:
   - **Mouse:** sends a Logitech HID++ 2.0 `CHANGE_HOST` request over Bluetooth.
